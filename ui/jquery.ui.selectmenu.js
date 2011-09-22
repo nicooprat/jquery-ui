@@ -448,10 +448,12 @@ $.widget("ui.selectmenu", {
 		// $( window ).unbind( ".selectmenu" );
 		$( document ).unbind( ".selectmenu" );
 
-		// unbind click on label, reset its for attr
-		$( 'label[for=' + this.newelement.attr('id') + ']' )
-			.attr( 'for', this.element.attr( 'id' ) )
-			.unbind( '.selectmenu' );
+		// unbind click on label, reset its for attr (if there was one)
+		if( $( 'label[for=' + this.newelement.attr('id') + ']' ).size() > 0 ) {
+    		$( 'label[for=' + this.newelement.attr('id') + ']' )
+    			.attr( 'for', this.element.attr( 'id' ) )
+    			.unbind( '.selectmenu' );
+        }
 		
 		this.newelementWrap.remove();
 		this.listWrap.remove();
